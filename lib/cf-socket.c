@@ -1412,6 +1412,8 @@ static void cf_socket_active(struct Curl_cfilter *cf, struct Curl_easy *data)
     set_local_ip(cf, data);
     Curl_persistconninfo(data, cf->conn, ctx->l_ip, ctx->l_port);
   }
+  DEBUGF(LOG_CF(data, cf, "setting socket %d as active",
+                (int)ctx->sock));
   ctx->active = TRUE;
 }
 
