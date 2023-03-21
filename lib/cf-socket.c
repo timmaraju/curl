@@ -793,7 +793,9 @@ static void cf_socket_close(struct Curl_cfilter *cf, struct Curl_easy *data)
       }
       else {
         DEBUGF(LOG_CF(data, cf, "cf_socket_close(%d) no longer at "
-                      "conn->sock[], discarding", (int)ctx->sock));
+                      "conn->sock[%d] (%d), discarding",
+                      (int)ctx->sock, cf->sockindex,
+                      (int)cf->conn->sock[cf->sockindex]));
         /* TODO: we do not want this to happen. Need to check which
          * code is messing with conn->sock[cf->sockindex] */
       }
